@@ -40,7 +40,7 @@ module.exports = {
 
       await novoFilme.setGeneros(generosData);
 
-      res.json(novoFilme);
+      res.status(201).json(novoFilme);
     } catch (error) {
       console.log(error.message);
       res
