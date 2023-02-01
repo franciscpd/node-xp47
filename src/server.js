@@ -7,6 +7,8 @@ const filmeRoutes = require("./routes/filme");
 const generoRoutes = require("./routes/genero");
 const clienteRoutes = require("./routes/cliente");
 
+const handleErrorMiddleware = require("./middlewares/handleError");
+
 const server = express();
 const port = 3000;
 
@@ -15,6 +17,12 @@ server.use("/", mainRoutes);
 server.use("/filmes", filmeRoutes);
 server.use("/generos", generoRoutes);
 server.use("/clientes", clienteRoutes);
+
+server.use(handleErrorMiddleware);
+
+server.use((req, res) => {
+  res.sendStatus(404);
+});
 
 const main = async () => {
   try {
