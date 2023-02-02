@@ -82,7 +82,6 @@ module.exports = {
       return res.sendStatus(404);
     }
 
-    await filme.setGeneros([]);
     await filme.destroy();
 
     res.sendStatus(204);

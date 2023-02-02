@@ -7,8 +7,10 @@ const FilmeGenero = require("./FilmeGenero");
 const ReservaFilme = require("./ReservaFilme");
 const Usuario = require("./usuario");
 
-Cliente.hasMany(Reserva);
-Cliente.hasOne(Endereco);
+Cliente.hasMany(Reserva, { onDelete: "cascade" });
+Cliente.hasOne(Endereco, { onDelete: "cascade" });
+
+Usuario.hasMany(Reserva, { onDelete: "cascade" });
 
 Endereco.belongsTo(Cliente, {
   foreignKey: "cliente_id",
@@ -17,17 +19,22 @@ Endereco.belongsTo(Cliente, {
 Filme.belongsToMany(Genero, {
   foreignKey: "filme_id",
   through: FilmeGenero,
+  onDelete: "cascade",
 });
-Filme.hasMany(ReservaFilme);
+Filme.hasMany(ReservaFilme, { onDelete: "cascade" });
 
 Genero.belongsToMany(Filme, {
   foreignKey: "genero_id",
   through: FilmeGenero,
+  onDelete: "cascade",
 });
 
-Reserva.hasMany(ReservaFilme);
+Reserva.hasMany(ReservaFilme, { onDelete: "cascade" });
 Reserva.belongsTo(Cliente, {
   foreignKey: "cliente_id",
+});
+Reserva.belongsTo(Usuario, {
+  foreignKey: "usuario_id",
 });
 
 ReservaFilme.belongsTo(Reserva, {

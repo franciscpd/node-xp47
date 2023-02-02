@@ -7,6 +7,7 @@ const filmeRoutes = require("./routes/filme");
 const generoRoutes = require("./routes/genero");
 const clienteRoutes = require("./routes/cliente");
 const autenticacaoRoutes = require("./routes/autenticacao");
+const reservaRoutes = require("./routes/reserva");
 
 const handleErrorMiddleware = require("./middlewares/handleError");
 const jwtMiddleware = require("./middlewares/jwt");
@@ -29,6 +30,7 @@ server.use("/autenticacao", autenticacaoRoutes);
 server.use("/filmes", filmeRoutes);
 server.use("/generos", generoRoutes);
 server.use("/clientes", clienteRoutes);
+server.use("/reservas", reservaRoutes);
 
 server.use(handleErrorMiddleware);
 

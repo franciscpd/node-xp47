@@ -2,6 +2,7 @@ const { DataTypes } = require("sequelize");
 
 const database = require("../services/database");
 const Cliente = require("./cliente");
+const Usuario = require("./usuario");
 
 const Reserva = database.define(
   "Reserva",
@@ -21,6 +22,13 @@ const Reserva = database.define(
       type: DataTypes.INTEGER,
       References: {
         model: Cliente,
+        key: "id",
+      },
+    },
+    usuarioId: {
+      type: DataTypes.INTEGER,
+      References: {
+        model: Usuario,
         key: "id",
       },
     },
