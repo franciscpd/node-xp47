@@ -5,6 +5,7 @@ const Cliente = require("./Cliente");
 const Endereco = require("./Endereco");
 const FilmeGenero = require("./FilmeGenero");
 const ReservaFilme = require("./ReservaFilme");
+const Usuario = require("./usuario");
 
 Cliente.hasMany(Reserva);
 Cliente.hasOne(Endereco);
@@ -43,4 +44,5 @@ module.exports = {
   Endereco,
   Reserva,
   ReservaFilme,
+  Usuario,
 };
